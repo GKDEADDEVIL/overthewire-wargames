@@ -1,0 +1,1119 @@
+krypton2@bandit:~$ cd /krypton/
+krypton2@bandit:/krypton$ cd krypton2
+krypton2@bandit:/krypton/krypton2$ ls
+encrypt  keyfile.dat  krypton3  README
+krypton2@bandit:/krypton/krypton2$ ls -la
+total 36
+drwxr-xr-x 2 root     root      4096 Jun 16 02:49 .
+drwxr-xr-x 9 root     root      4096 Jun 16 02:49 ..
+-rwsr-x--- 1 krypton3 krypton2 16328 Jun 16 02:49 encrypt
+-rw-r----- 1 krypton3 krypton3    27 Jun 16 02:49 keyfile.dat
+-rw-r----- 1 krypton2 krypton2    13 Jun 16 02:49 krypton3
+-rw-r----- 1 krypton2 krypton2  1815 Jun 16 02:49 README
+krypton2@bandit:/krypton/krypton2$ mkdir /tmp
+mkdir: cannot create directory ‘/tmp’: File exists
+krypton2@bandit:/krypton/krypton2$ mkdir /tmp/lev3
+krypton2@bandit:/krypton/krypton2$ cd /tmp/lev3
+krypton2@bandit:/tmp/lev3$ ls
+krypton2@bandit:/tmp/lev3$ ln -s /krypton/krypton2/keyfile.dat
+krypton2@bandit:/tmp/lev3$ ls
+keyfile.dat
+krypton2@bandit:/tmp/lev3$ chmod 777 keyfile.dat 
+chmod: changing permissions of 'keyfile.dat': Operation not permitted
+krypton2@bandit:/tmp/lev3$ chmod 777 .
+krypton2@bandit:/tmp/lev3$ echo "AAAAA" > encrypt.txt
+krypton2@bandit:/tmp/lev3$ /krypton/krypton2/encrypt encrypt.txt
+krypton2@bandit:/tmp/lev3$ ls -la
+total 84
+drwxrwxrwx   2 krypton2 krypton2  4096 Jun 18 14:55 .
+drwxrwx-wt 969 root     root     69632 Jun 18 14:55 ..
+-rw-rw-r--   1 krypton3 krypton2     5 Jun 18 14:55 ciphertext
+-rw-rw-r--   1 krypton2 krypton2     6 Jun 18 14:55 encrypt.txt
+lrwxrwxrwx   1 krypton2 krypton2    29 Jun 18 14:54 keyfile.dat -> /krypton/krypton2/keyfile.dat
+krypton2@bandit:/tmp/lev3$ cat ciphertext 
+krypton2@bandit:/tmp/lev3$ cat ciphertext 
+MMMMMkrypton2@bandit:/tmp/lev3$ ls -la
+total 84
+drwxrwxrwx   2 krypton2 krypton2  4096 Jun 18 14:55 .
+drwxrwx-wt 969 root     root     69632 Jun 18 14:56 ..
+-rw-rw-r--   1 krypton3 krypton2     5 Jun 18 14:55 ciphertext
+-rw-rw-r--   1 krypton2 krypton2     6 Jun 18 14:55 encrypt.txt
+lrwxrwxrwx   1 krypton2 krypton2    29 Jun 18 14:54 keyfile.dat -> /krypton/krypton2/keyfile.dat
+krypton2@bandit:/tmp/lev3$ cd /krypton/krypton2
+krypton2@bandit:/krypton/krypton2$ cat krypton3 | tr 'A-Za-z' 'O-ZA-No-za-n'
+CAESARISEASY
+krypton2@bandit:/krypton/krypton2$ logout
+Connection to krypton.labs.overthewire.org closed.
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ nano krypton3
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ ssh krypton3@krypton.labs.overthewire.org  -p 2231
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+krypton3@krypton.labs.overthewire.org's password: 
+
+      ,----..            ,----,          .---.
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' '
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      :
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ;
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"
+     \   \ .'        ;   |.'       \   \ ;
+  www. `---` ver     '---' he       '---" ire.org
+
+
+Welcome to OverTheWire!
+
+If you find any problems, please report them to the #wargames channel on
+discord or IRC.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames.
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ is disabled and to /proc
+  restricted so that users cannot snoop on eachother. Files and directories
+  with easily guessable or short names will be periodically deleted! The /tmp
+  directory is regularly wiped.
+  Please play nice:
+
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS!
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few useful tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /opt/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /opt/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /opt/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /opt/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us on discord or IRC.
+
+  Enjoy your stay!
+
+krypton3@bandit:~$ ls
+krypton3@bandit:~$ cd /krypton/krypton3
+krypton3@bandit:/krypton/krypton3$ ls
+found1  found2  found3  HINT1  HINT2  krypton4  README
+krypton3@bandit:/krypton/krypton3$ ls -la
+total 36
+drwxr-xr-x 2 root     root     4096 Jun 16 02:49 .
+drwxr-xr-x 9 root     root     4096 Jun 16 02:49 ..
+-rw-r----- 1 krypton3 krypton3 1542 Jun 16 02:49 found1
+-rw-r----- 1 krypton3 krypton3 2128 Jun 16 02:49 found2
+-rw-r----- 1 krypton3 krypton3  560 Jun 16 02:49 found3
+-rw-r----- 1 krypton3 krypton3   56 Jun 16 02:49 HINT1
+-rw-r----- 1 krypton3 krypton3   37 Jun 16 02:49 HINT2
+-rw-r----- 1 krypton3 krypton3   42 Jun 16 02:49 krypton4
+-rw-r----- 1 krypton3 krypton3  785 Jun 16 02:49 README
+krypton3@bandit:/krypton/krypton3$ cat README 
+Well done.  You've moved past an easy substitution cipher.
+
+Hopefully you just encrypted the alphabet a plaintext 
+to fully expose the key in one swoop.
+
+The main weakness of a simple substitution cipher is 
+repeated use of a simple key.  In the previous exercise
+you were able to introduce arbitrary plaintext to expose
+the key.  In this example, the cipher mechanism is not 
+available to you, the attacker.
+
+However, you have been lucky.  You have intercepted more
+than one message.  The password to the next level is found
+in the file 'krypton4'.  You have also found 3 other files.
+(found1, found2, found3)
+
+You know the following important details:
+
+- The message plaintexts are in English (*** very important)
+- They were produced from the same key (*** even better!)
+
+
+Enjoy.
+
+
+krypton3@bandit:/krypton/krypton3$ ls -la
+total 36
+drwxr-xr-x 2 root     root     4096 Jun 16 02:49 .
+drwxr-xr-x 9 root     root     4096 Jun 16 02:49 ..
+-rw-r----- 1 krypton3 krypton3 1542 Jun 16 02:49 found1
+-rw-r----- 1 krypton3 krypton3 2128 Jun 16 02:49 found2
+-rw-r----- 1 krypton3 krypton3  560 Jun 16 02:49 found3
+-rw-r----- 1 krypton3 krypton3   56 Jun 16 02:49 HINT1
+-rw-r----- 1 krypton3 krypton3   37 Jun 16 02:49 HINT2
+-rw-r----- 1 krypton3 krypton3   42 Jun 16 02:49 krypton4
+-rw-r----- 1 krypton3 krypton3  785 Jun 16 02:49 README
+krypton3@bandit:/krypton/krypton3$ ls -la
+total 36
+drwxr-xr-x 2 root     root     4096 Jun 16 02:49 .
+drwxr-xr-x 9 root     root     4096 Jun 16 02:49 ..
+-rw-r----- 1 krypton3 krypton3 1542 Jun 16 02:49 found1
+-rw-r----- 1 krypton3 krypton3 2128 Jun 16 02:49 found2
+-rw-r----- 1 krypton3 krypton3  560 Jun 16 02:49 found3
+-rw-r----- 1 krypton3 krypton3   56 Jun 16 02:49 HINT1
+-rw-r----- 1 krypton3 krypton3   37 Jun 16 02:49 HINT2
+-rw-r----- 1 krypton3 krypton3   42 Jun 16 02:49 krypton4
+-rw-r----- 1 krypton3 krypton3  785 Jun 16 02:49 README
+krypton3@bandit:/krypton/krypton3$ cat found1
+CGZNL YJBEN QYDLQ ZQSUQ NZCYD SNQVU BFGBK GQUQZ QSUQN UZCYD SNJDS UDCXJ ZCYDS NZQSU QNUZB WSBNZ QSUQN UDCXJ CUBGS BXJDS UCTYV SUJQG WTBUJ KCWSV LFGBK GSGZN LYJCB GJSZD GCHMS UCJCU QJLYS BXUMA UJCJM JCBGZ CYDSN CGKDC ZDSQZ DVSJJ SNCGJ DSYVQ CGJSO JCUNS YVQZS WALQV SJJSN UBTSX COSWG MTASN BXYBU CJCBG UWBKG JDSQV YDQAS JXBNS OQTYV SKCJD QUDCX JBXQK BMVWA SNSYV QZSWA LWAKB MVWAS ZBTSS QGWUB BGJDS TSJDB WCUGQ TSWQX JSNRM VCMUZ QSUQN KDBMU SWCJJ BZBTT MGCZQ JSKCJ DDCUE SGSNQ VUJDS SGZNL YJCBG UJSYY SNXBN TSWAL QZQSU QNZCY DSNCU BXJSG CGZBN YBNQJ SWQUY QNJBX TBNSZ BTYVS OUZDS TSUUM ZDQUJ DSICE SGNSZ CYDSN QGWUJ CVVDQ UTBWS NGQYY VCZQJ CBGCG JDSNB JULUJ STQUK CJDQV VUCGE VSQVY DQASJ UMAUJ CJMJC BGZCY DSNUJ DSZQS UQNZC YDSNC USQUC VLANB FSGQG WCGYN QZJCZ SBXXS NUSUU SGJCQ VVLGB ZBTTM GCZQJ CBGUS ZMNCJ LUDQF SUYSQ NSYNB WMZSW TBUJB XDCUF GBKGK BNFAS JKSSG QGWDC USQNV LYVQL UKSNS TQCGV LZBTS WCSUQ GWDCU JBNCS UESGN SUDSN QCUSW JBJDS YSQFB XUBYD CUJCZ QJCBG QGWQN JCUJN LALJD SSGWB XJDSU COJSS GJDZS GJMNL GSOJD SKNBJ STQCG VLJNQ ESWCS UMGJC VQABM JCGZV MWCGE DQTVS JFCGE VSQNQ GWTQZ ASJDZ BGUCW SNSWU BTSBX JDSXC GSUJS OQTYV SUCGJ DSSGE VCUDV QGEMQ ESCGD CUVQU JYDQU SDSKN BJSJN QECZB TSWCS UQVUB FGBKG QUNBT QGZSU QGWZB VVQAB NQJSW KCJDB JDSNY VQLKN CEDJU TQGLB XDCUY VQLUK SNSYM AVCUD SWCGS WCJCB GUBXI QNLCG EHMQV CJLQG WQZZM NQZLW MNCGE DCUVC XSJCT SQGWC GJKBB XDCUX BNTSN JDSQJ NCZQV ZBVVS QEMSU YMAVC UDSWJ DSXCN UJXBV CBQZB VVSZJ SWSWC JCBGB XDCUW NQTQJ CZKBN FUJDQ JCGZV MWSWQ VVAMJ JKBBX JDSYV QLUGB KNSZB EGCUS WQUUD QFSUY SQNSU krypton3@bandit:/krypton/krypton3$ cat found2
+QVJDB MEDGB QJJSG WQGZS NSZBN WUXBN JDSYS NCBWU MNICI STBUJ ACBEN QYDSN UQENS SJDQJ UDQFS UYSQN SKQUS WMZQJ SWQJJ DSFCG EUGSK UZDBB VCGUJ NQJXB NWQXN SSUZD BBVZD QNJSN SWCGQ ABMJQ HMQNJ SNBXQ TCVSX NBTDC UDBTS ENQTT QNUZD BBVUI QNCSW CGHMQ VCJLW MNCGE JDSSV CPQAS JDQGS NQAMJ JDSZM NNCZM VMTKQ UWCZJ QJSWA LVQKJ DNBME DBMJS GEVQG WQGWJ DSUZD BBVKB MVWDQ ISYNB ICWSW QGCGJ SGUCI SSWMZ QJCBG CGVQJ CGENQ TTQNQ GWJDS ZVQUU CZUQJ JDSQE SBXUD QFSUY SQNST QNNCS WJDSL SQNBV WQGGS DQJDQ KQLJD SZBGU CUJBN LZBMN JBXJD SWCBZ SUSBX KBNZS UJSNC UUMSW QTQNN CQESV CZSGZ SBGGB ISTAS NJKBB XDQJD QKQLU GSCED ABMNU YBUJS WABGW UJDSG SOJWQ LQUUM NSJLJ DQJJD SNSKS NSGBC TYSWC TSGJU JBJDS TQNNC QESJD SZBMY VSTQL DQISQ NNQGE SWJDS ZSNST BGLCG UBTSD QUJSU CGZSJ DSKBN ZSUJS NZDQG ZSVVB NQVVB KSWJD STQNN CQESA QGGUJ BASNS QWBGZ SCGUJ SQWBX JDSMU MQVJD NSSJC TSUQG GSUYN SEGQG ZLZBM VWDQI SASSG JDSNS QUBGX BNJDC UUCOT BGJDU QXJSN JDSTQ NNCQE SUDSE QISAC NJDJB QWQME DJSNU MUQGG QKDBK QUAQY JCUSW BGTQL JKCGU UBGDQ TGSJQ GWWQM EDJSN RMWCJ DXBVV BKSWQ VTBUJ JKBLS QNUVQ JSNQG WKSNS AQYJC USWBG XSANM QNLDQ TGSJW CSWBX MGFGB KGZQM USUQJ JDSQE SBXQG WKQUA MNCSW BGQME MUJQX JSNJD SACNJ DBXJD SJKCG UJDSN SQNSX SKDCU JBNCZ QVJNQ ZSUBX UDQFS UYSQN SMGJC VDSCU TSGJC BGSWQ UYQNJ BXJDS VBGWB GJDSQ JNSUZ SGSCG ASZQM USBXJ DCUEQ YUZDB VQNUN SXSNJ BJDSL SQNUA SJKSS GQGWQ UUDQF SUYSQ NSUVB UJLSQ NUACB ENQYD SNUQJ JSTYJ CGEJB QZZBM GJXBN JDCUY SNCBW DQISN SYBNJ SWTQG LQYBZ NLYDQ VUJBN CSUGC ZDBVQ UNBKS UDQFS UYSQN SUXCN UJACB ENQYD SNNSZ BMGJS WQUJN QJXBN WVSES GWJDQ JUDQF SUYSQ NSXVS WJDSJ BKGXB NVBGW BGJBS UZQYS YNBUS ZMJCB GXBNW SSNYB QZDCG EQGBJ DSNSC EDJSS GJDZS GJMNL UJBNL DQUUD QFSUY SQNSU JQNJC GEDCU JDSQJ NCZQV ZQNSS NTCGW CGEJD SDBNU SUBXJ DSQJN SYQJN BGUCG VBGWB GRBDG QMANS LNSYB NJSWJ DQJUD QFSUY SQNSD QWASS GQZBM GJNLU ZDBBV TQUJS NUBTS JKSGJ CSJDZ SGJMN LUZDB VQNUD QISUM EESUJ SWJDQ JUDQF SUYSQ NSTQL DQISA SSGST YVBLS WQUQU ZDBBV TQUJS NALQV SOQGW SNDBE DJBGB XVQGZ QUDCN SQZQJ DBVCZ VQGWB KGSNK DBGQT SWQZS NJQCG KCVVC QTUDQ FSUDQ XJSCG DCUKC VVGBS ICWSG ZSUMA UJQGJ CQJSU UMZDU JBNCS UBJDS NJDQG DSQNU QLZBV VSZJS WQXJS NDCUW SQJDkrypton3@bandit:/krypton/krypton3$ cat found3
+DSNSM YBGVS ENQGW QNBUS KCJDQ ENQIS QGWUJ QJSVL QCNQG WANBM EDJTS JDSAS SJVSX NBTQE VQUUZ QUSCG KDCZD CJKQU SGZVB USWCJ KQUQA SQMJC XMVUZ QNQAQ SMUQG WQJJD QJJCT SMGFG BKGJB GQJMN QVCUJ UBXZB MNUSQ ENSQJ YNCPS CGQUZ CSGJC XCZYB CGJBX ICSKJ DSNSK SNSJK BNBMG WAVQZ FUYBJ UGSQN BGSSO JNSTC JLBXJ DSAQZ FQGWQ VBGEB GSGSQ NJDSB JDSNJ DSUZQ VSUKS NSSOZ SSWCG EVLDQ NWQGW EVBUU LKCJD QVVJD SQYYS QNQGZ SBXAM NGCUD SWEBV WJDSK SCEDJ BXJDS CGUSZ JKQUI SNLNS TQNFQ AVSQG WJQFC GEQVV JDCGE UCGJB ZBGUC WSNQJ CBGCZ BMVWD QNWVL AVQTkrypton3@bandit:/krypton/krypton3$ ls -la
+total 36
+drwxr-xr-x 2 root     root     4096 Jun 16 02:49 .
+drwxr-xr-x 9 root     root     4096 Jun 16 02:49 ..
+-rw-r----- 1 krypton3 krypton3 1542 Jun 16 02:49 found1
+-rw-r----- 1 krypton3 krypton3 2128 Jun 16 02:49 found2
+-rw-r----- 1 krypton3 krypton3  560 Jun 16 02:49 found3
+-rw-r----- 1 krypton3 krypton3   56 Jun 16 02:49 HINT1
+-rw-r----- 1 krypton3 krypton3   37 Jun 16 02:49 HINT2
+-rw-r----- 1 krypton3 krypton3   42 Jun 16 02:49 krypton4
+-rw-r----- 1 krypton3 krypton3  785 Jun 16 02:49 README
+krypton3@bandit:/krypton/krypton3$ cat HINT1
+Some letters are more prevalent in English than others.
+krypton3@bandit:/krypton/krypton3$ cat HINT2
+"Frequency Analysis" is your friend.
+krypton3@bandit:/krypton/krypton3$ for i in {A..Z}; do printf $1; cat found1 found2 found3 | tr -cd $1 | wc -c; done
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+printf: usage: printf [-v var] format [arguments]
+tr: missing operand
+Try 'tr --help' for more information.
+0
+krypton3@bandit:/krypton/krypton3$ for i in {A..Z}; do printf $1; cat found1 found2 found3 | tr -cd $i | wc -c; done
+$i
+krypton3@bandit:/krypton/krypton3$ for i in {A..Z}; do printf $1; cat found1 found2 found3 | tr -cd $i | wc -c; done
+printf: usage: printf [-v var] format [arguments]
+55
+printf: usage: printf [-v var] format [arguments]
+246
+printf: usage: printf [-v var] format [arguments]
+227
+printf: usage: printf [-v var] format [arguments]
+210
+printf: usage: printf [-v var] format [arguments]
+64
+printf: usage: printf [-v var] format [arguments]
+28
+printf: usage: printf [-v var] format [arguments]
+227
+printf: usage: printf [-v var] format [arguments]
+4
+printf: usage: printf [-v var] format [arguments]
+19
+printf: usage: printf [-v var] format [arguments]
+301
+printf: usage: printf [-v var] format [arguments]
+67
+printf: usage: printf [-v var] format [arguments]
+60
+printf: usage: printf [-v var] format [arguments]
+86
+printf: usage: printf [-v var] format [arguments]
+240
+printf: usage: printf [-v var] format [arguments]
+12
+printf: usage: printf [-v var] format [arguments]
+2
+printf: usage: printf [-v var] format [arguments]
+340
+printf: usage: printf [-v var] format [arguments]
+4
+printf: usage: printf [-v var] format [arguments]
+456
+printf: usage: printf [-v var] format [arguments]
+75
+printf: usage: printf [-v var] format [arguments]
+257
+printf: usage: printf [-v var] format [arguments]
+130
+printf: usage: printf [-v var] format [arguments]
+129
+printf: usage: printf [-v var] format [arguments]
+71
+printf: usage: printf [-v var] format [arguments]
+84
+printf: usage: printf [-v var] format [arguments]
+132
+krypton3@bandit:/krypton/krypton3$ for i in {A..Z}; do printf $i; cat found1 found2 found3 | tr -cd $i | wc -c; done
+A55
+B246
+C227
+D210
+E64
+F28
+G227
+H4
+I19
+J301
+K67
+L60
+M86
+N240
+O12
+P2
+Q340
+R4
+S456
+T75
+U257
+V130
+W129
+X71
+Y84
+Z132
+krypton3@bandit:/krypton/krypton3$ for i in {A..Z}; do printf $i; cat found1 found2 found3 | tr -cd $i | wc -c; done 
+
+krypton3@bandit:/krypton/krypton3$ for i in {A..Z}; do printf $i; cat found1 found2 found3 | tr -cd $i | wc -c; done 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+krypton3@bandit:/krypton/krypton3$ for i in {A..Z}; do printf $i; cat found1 found2 found3 | tr -cd $i | wc -c | tr -d '\n\; printf"$i \n"; done | sort -nr
+> ^C
+krypton3@bandit:/krypton/krypton3$ for i in {A..Z}; do printf $i; cat found1 found2 found3 | tr -cd $i | wc -c | tr -d '\n'; printf"$i \n"; done | sort -nr
+printfA \n: command not found
+printfB \n: command not found
+printfC \n: command not found
+printfD \n: command not found
+printfE \n: command not found
+printfF \n: command not found
+printfG \n: command not found
+printfH \n: command not found
+printfI \n: command not found
+^Ckrypton3@bandit:/krypton/krypton3$ for i in {A..Z}; do printf $i; cat found1 found2 found3 | tr -cd $i | wc -c | tr -d '\n'; printf " $i \n"; done | sort -nr
+Z132 Z 
+Y84 Y 
+X71 X 
+W129 W 
+V130 V 
+U257 U 
+T75 T 
+S456 S 
+R4 R 
+Q340 Q 
+P2 P 
+O12 O 
+N240 N 
+M86 M 
+L60 L 
+K67 K 
+J301 J 
+I19 I 
+H4 H 
+G227 G 
+F28 F 
+E64 E 
+D210 D 
+C227 C 
+B246 B 
+A55 A 
+krypton3@bandit:/krypton/krypton3$ for i in {A..Z}; do printf $i; cat found1 found2 found3 | tr -cd $i | wc -c | tr -d '\n'; printkrypton3@bandit:/krypton/krypton3$ for i in {A..Z}; cat found1 found2 found3 | tr -cd $i | wc -c | tr -d '\n'; printf " $i \n"; done | sort -nr
+-bash: syntax error near unexpected token `cat'
+krypton3@bandit:/krypton/krypton3$ for i in {A..Z}; do cat found1 found2 found3 | tr -cd $i | wc -c | tr -d '\n'; printf " $i \n"; done | sort -nr
+456 S 
+340 Q 
+301 J 
+257 U 
+246 B 
+240 N 
+227 G 
+227 C 
+210 D 
+132 Z 
+130 V 
+129 W 
+86 M 
+84 Y 
+75 T 
+71 X 
+67 K 
+64 E 
+60 L 
+55 A 
+28 F 
+19 I 
+12 O 
+4 R 
+4 H 
+2 P 
+krypton3@bandit:/krypton/krypton3$ cat krypton4 | tr 'SQJUBNGCDZVWMYTXKELAFIORHP' 'ETAOINSRHDLUCMFYWGPBVKXQJZ'
+krypton3@bandit:/krypton/krypton3$ cat krypton4 | tr 'SQJUBNGCDZVWMYTXKELAFIORHP' 'ETAOINSRHDLUCMFYWGPBVKXQJZ'
+WELLU ISEAH ELEKE LYICN MTOOW INURO BNCAE krypton3@bandit:/krypton/krypton3$ cat HINT2
+"Frequency Analysis" is your friend.
+krypton3@bandit:/krypton/krypton3$ cat HINT1
+Some letters are more prevalent in English than others.
+krypton3@bandit:/krypton/krypton3$ cat krypton4 | tr 'SQJUBNGCDZVWMYTXKELAFIORHP' 'EATSORNIHCLDUPYFWGMBKVXQJZ'
+WELLD ONETH ELEVE LFOUR PASSW ORDIS BRUTE krypton3@bandit:/krypton/krypton3$ logout
+Connection to krypton.labs.overthewire.org closed.
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ nano krypton4
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ ssh krypton4@krypton.labs.overthewire.org  -p 2231
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+krypton4@krypton.labs.overthewire.org's password: 
+
+      ,----..            ,----,          .---.
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' '
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      :
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ;
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"
+     \   \ .'        ;   |.'       \   \ ;
+  www. `---` ver     '---' he       '---" ire.org
+
+
+Welcome to OverTheWire!
+
+If you find any problems, please report them to the #wargames channel on
+discord or IRC.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames.
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ is disabled and to /proc
+  restricted so that users cannot snoop on eachother. Files and directories
+  with easily guessable or short names will be periodically deleted! The /tmp
+  directory is regularly wiped.
+  Please play nice:
+
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS!
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few useful tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /opt/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /opt/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /opt/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /opt/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us on discord or IRC.
+
+  Enjoy your stay!
+
+krypton4@bandit:~$ cd /krypton/krypton4
+krypton4@bandit:/krypton/krypton4$ ls -la
+total 28
+drwxr-xr-x 2 root     root     4096 Jun 16 02:49 .
+drwxr-xr-x 9 root     root     4096 Jun 16 02:49 ..
+-rw-r----- 1 krypton4 krypton4 1740 Jun 16 02:49 found1
+-rw-r----- 1 krypton4 krypton4 2943 Jun 16 02:49 found2
+-rw-r----- 1 krypton4 krypton4  287 Jun 16 02:49 HINT
+-rw-r----- 1 krypton4 krypton4   10 Jun 16 02:49 krypton5
+-rw-r----- 1 krypton4 krypton4 1385 Jun 16 02:49 README
+krypton4@bandit:/krypton/krypton4$ cat found1
+YYICS JIZIB AGYYX RIEWV IXAFN JOOVQ QVHDL CRKLB SSLYX RIQYI IOXQT WXRIC RVVKP BHZXI YLYZP DLCDI IKGFJ UXRIP TFQGL CWVXR IEZRV NMYSF JDLCL RXOWJ NMINX FNJSP JGHVV ERJTT OOHRM VMBWN JTXKG JJJXY TSYKL OQZFT OSRFN JKBIY YSSHE LIKLO RFJGS VMRJC CYTCS VHDLC LRXOJ MWFYB JPNVR NWUMZ GRVMF UPOEB XKSDL CBZGU IBBZX MLMKK LOACX KECOC IUSBS RMPXR IPJZW XSPTR HKRQB VVOHR MVKEE PIZEX SDYYI QERJJ RYSLJ VZOVU NJLOW RTXSD LYYNE ILMBK LORYW VAOXM KZRNL CWZRA YGWVH DLCLZ VVXFF KASPJ GVIKW WWVTV MCIKL OQYSW SBAFJ EWRII SFACC MZRVO MLYYI MSSSK VISDY YIGML PZICW FJNMV PDNEH ISSFE HWEIJ PSEEJ QYIBW JFMIC TCWYE ZWLTK WKMBY YICGY WVGBS UKFVG IKJRR DSBJJ XBSWM VVYLR MRXSW BNWJO VCSKW KMBYY IQYYW UMKRM KKLOK YYVWX SMSVL KWCAV VNIQY ISIIB MVVLI DTIIC SGSRX EVYQC CDLMZ XLDWF JNSEP BRROO WJFMI CSDDF YKWQM VLKWM KKLOV CXKFE XRFBI MEPJW SBWFJ ZWGMA PVHKR BKZIB GCFEH WEWSF XKPJT NCYYR TUICX PTPLO VIJVT DSRMV AOWRB YIBIR MVWER QJKWK RBDFY MELSF XPEGQ KSPML IYIBX FJPXR ELPVH RMKFE HLEBJ YMWKM TUFII YSUXE VLJUX YAYWU XRIUJ JXGEJ PZRQS TJIJS IJIJS PWMKK KBEQX USDXC IYIBI YSUXR IPJNM DLBFZ WSIQF EHLYR YVVMY NXUSB SRMPW DMJQN SBIRM VTBIR YPWSP IIIIC WQMVL KHNZK SXMLY YIZEJ FTILY RSFAD SFJIW EVNWZ WOWFJ WSERB NKAKW LTCSX KCWXV OILGL XZYPJ NLSXC YYIBM ZGFRK VMZEH DSRTJ ROGIM RHKPQ TCSCX GYJKB ICSTS VSPFE HGEQF JARMR JRWNS PTKLI WBWVW CXFJV QOVYQ UGSXW BRWCS MSCIP XDFIF OLGSU ECXFJ PENZY STINX FJXVY YLISI MEKJI SEKFJ IEXHF NCPSI PKFVD LCWVA OVCSF JKVKX ESBLM ZJICM LYYMC GMZEX BCMKK LOACX KEXHR MVKBS SSUAK WSSKM VPCIZ RDLCF WXOVL TFRDL CXLRC LMSVL YXGSK LOMPK RGOWD TIXRI PJNIB ILTKV OIQYF SPJCW KLOQQ MRHOW MYYED FCKFV ORGLY XNSPT KLIEL IKSDS YSUXR IJNFR GIPJK MBIBF EHVEW IFAXY NTEXR IEWRW CELIW IVPYX CIOTU NKLDL CBFSN QYSRR NXFJJ GKVCH ISGOC JGMXK UFKGR krypton4@bandit:/krypton/krypton4$ X RIEWV IXAFN JOOVQ QVHDL CRKLB SSLYX RIQYI IOXQT WXRIC RVVKP BHZXI YLYZP DLCDI IKGFJ UXRIP TFQGL CWVXR IEZRV NMYSF JDLCL RXOWJ NMINX FNJSP JGHVV ERJTT OOHRM VMBWN JTXKG JJJXY TSYKL OQZFT OSRFN JKBIY YSSHE LIKLO RFJGS VMRJC CYTCS VHDLC LRXOJ MWFYB JPNVR NWUMZ GRVMF UPOEB XKSDL CBZGU IBBZX MLMKK LOACX KECOC IUSBS RMPXR IPJZW XSPTR HKRQB VVOHR MVKEE PIZEX SDYYI QERJJ RYSLJ VZOVU NJLOW RTXSD LYYNE ILMBK LORYW VAOXM KZRNL CWZRA YGWVH DLCLZ VVXFF KASPJ GVIKW WWVTV MCIKL OQYSW SBAFJ EWRII SFACC MZRVO MLYYI MSSSK VISDY YIGML PZICW FJNMV PDNEH ISSFE HWEIJ PSEEJ QYIBW JFMIC TCWYE ZWLTK WKMBY YICGY WVGBS UKFVG IKJRR DSBJJ XBSWM VVYLR MRXSW BNWJO VCSKW KMBYY IQYYW UMKRM KKLOK YYVWX SMSVL KWCAV VNIQY ISIIB MVVLI DTIIC SGSRX EVYQC CDLMZ XLDWF JNSEP BRROO WJFMI CSDDF YKWQM VLKWM KKLOV CXKFE XRFBI MEPJW SBWFJ ZWGMA PVHKR BKZIB GCFEH WEWSF XKPJT NCYYR TUICX PTPLO VIJVT DSRMV AOWRB YIBIR MVWER QJKWK RBDFY MELSF XPEGQ KSPML IYIBX FJPXR ELPVH RMKFE HLEBJ YMWKM TUFII YSUXE VLJUX YAYWU XRIUJ JXGEJ PZRQS TJIJS IJIJS PWMKK KBEQX USDXC IYIBI YSUXR IPJNM DLBFZ WSIQF EHLYR YVVMY NXUSB SRMPW DMJQN SBIRM VTBIR YPWSP IIIIC WQMVL KHNZK SXMLY YIZEJ FTILY RSFAD SFJIW EVNWZ WOWFJ WSERB NKAKW LTCSX KCWXV OILGL XZYPJ NLSXC YYIBM ZGFRK VMZEH DSRTJ ROGIM RHKPQ TCSCX GYJKB ICSTS VSPFE HGEQF JARMR JRWNS PTKLI WBWVW CXFJV QOVYQ UGSXW BRWCS MSCIP XDFIF OLGSU ECXFJ PENZY STINX FJXVY YLISI MEKJI SEKFJ IEXHF NCPSI PKFVD LCWVA OVCSF JKVKX ESBLM ZJICM LYYMC GMZEX BCMKK LOACX KEXHR MVKBS SSUAK WSSKM VPCIZ RDLCF WXOVL TFRDL CXLRC LMSVL YXGSK LOMPK RGOWD TIXRI PJNIB ILTKV OIQYF SPJCW KLOQQ MRHOW MYYED FCKFV ORGLY XNSPT KLIEL IKSDS YSUXR IJNFR GIPJK MBIBF EHVEW IFAXY NTEXR IEWRW CELIW IVPYX CIOTU NKLDL CBFSN QYSRR NXFJJ GKVCH ISGOC JGMXK UFKGR krypton4@bandit:/krypton/krypton4$ 
+Command 'X' not found, but can be installed with:
+apt install xserver-xorg-core
+Please ask your administrator.
+krypton4@bandit:/krypton/krypton4$ 
+krypton4@bandit:/krypton/krypton4$ cat found1
+YYICS JIZIB AGYYX RIEWV IXAFN JOOVQ QVHDL CRKLB SSLYX RIQYI IOXQT WXRIC RVVKP BHZXI YLYZP DLCDI IKGFJ UXRIP TFQGL CWVXR IEZRV NMYSF JDLCL RXOWJ NMINX FNJSP JGHVV ERJTT OOHRM VMBWN JTXKG JJJXY TSYKL OQZFT OSRFN JKBIY YSSHE LIKLO RFJGS VMRJC CYTCS VHDLC LRXOJ MWFYB JPNVR NWUMZ GRVMF UPOEB XKSDL CBZGU IBBZX MLMKK LOACX KECOC IUSBS RMPXR IPJZW XSPTR HKRQB VVOHR MVKEE PIZEX SDYYI QERJJ RYSLJ VZOVU NJLOW RTXSD LYYNE ILMBK LORYW VAOXM KZRNL CWZRA YGWVH DLCLZ VVXFF KASPJ GVIKW WWVTV MCIKL OQYSW SBAFJ EWRII SFACC MZRVO MLYYI MSSSK VISDY YIGML PZICW FJNMV PDNEH ISSFE HWEIJ PSEEJ QYIBW JFMIC TCWYE ZWLTK WKMBY YICGY WVGBS UKFVG IKJRR DSBJJ XBSWM VVYLR MRXSW BNWJO VCSKW KMBYY IQYYW UMKRM KKLOK YYVWX SMSVL KWCAV VNIQY ISIIB MVVLI DTIIC SGSRX EVYQC CDLMZ XLDWF JNSEP BRROO WJFMI CSDDF YKWQM VLKWM KKLOV CXKFE XRFBI MEPJW SBWFJ ZWGMA PVHKR BKZIB GCFEH WEWSF XKPJT NCYYR TUICX PTPLO VIJVT DSRMV AOWRB YIBIR MVWER QJKWK RBDFY MELSF XPEGQ KSPML IYIBX FJPXR ELPVH RMKFE HLEBJ YMWKM TUFII YSUXE VLJUX YAYWU XRIUJ JXGEJ PZRQS TJIJS IJIJS PWMKK KBEQX USDXC IYIBI YSUXR IPJNM DLBFZ WSIQF EHLYR YVVMY NXUSB SRMPW DMJQN SBIRM VTBIR YPWSP IIIIC WQMVL KHNZK SXMLY YIZEJ FTILY RSFAD SFJIW EVNWZ WOWFJ WSERB NKAKW LTCSX KCWXV OILGL XZYPJ NLSXC YYIBM ZGFRK VMZEH DSRTJ ROGIM RHKPQ TCSCX GYJKB ICSTS VSPFE HGEQF JARMR JRWNS PTKLI WBWVW CXFJV QOVYQ UGSXW BRWCS MSCIP XDFIF OLGSU ECXFJ PENZY STINX FJXVY YLISI MEKJI SEKFJ IEXHF NCPSI PKFVD LCWVA OVCSF JKVKX ESBLM ZJICM LYYMC GMZEX BCMKK LOACX KEXHR MVKBS SSUAK WSSKM VPCIZ RDLCF WXOVL TFRDL CXLRC LMSVL YXGSK LOMPK RGOWD TIXRI PJNIB ILTKV OIQYF SPJCW KLOQQ MRHOW MYYED FCKFV ORGLY XNSPT KLIEL IKSDS YSUXR IJNFR GIPJK MBIBF EHVEW IFAXY NTEXR IEWRW CELIW IVPYX CIOTU NKLDL CBFSN QYSRR NXFJJ GKVCH ISGOC JGMXK UFKGR krypton4@bandit:/krypton/krypton4$ cat found2
+YYIIA CWVSL PGLVH DSAFD TYYRY YEDRG LYXER BJIEV EPLVX BICNE XRIDT IICXD TIXRI PJNIB ILTYS EWCXE IKVRM VXBIC RRHOE ETFHD LGHBG YZCWZ RQXMU ISDIA YKLOQ DWFQD LCIVA KRBYY IDMLB FSNQY STLYT NJUEQ VCFKT SPCTW AYSBB ZXRLG XRBOE LIUSB SRMPF EMJYR WZPCS UMNJG WVXRE RBRVW IBMVV KRBRR HOLCW WIOPJ JJWVS LJCCC LCFEH DSRTR XOXFJ CECXM KKLOM PGIIK HYSUR YAQMV HSHLT KOXSU BYEDX FJPAY YJIUS PSPGI IKODF JXSJW TLASW FXRMN XFJCM YRGBZ PVKMN EXYXF JWSBI QYRRN OGQCE NICWW SBCMZ PSEGY SISKW RNKFI XFJWM BIQNE GOCMZ IXKWR JJEBI QTGIM YJNRV DLYYP SETPJ WIBGM TBINJ MTUEX HRMVR ISSBZ PVLYA VEFIP DXSYH ZWVEU JYXKH YRRUC IKWCI FRDFC LXINX FJKMX AMTUQ KRGXY SEPBH VVDEG SCCGI CUZJI SSPZP VIBFG SYVBJ VVKRB YYIXQ WORAC AMZCH BYQYR KKMLG LXDLC QZSXA CSKEG EWNEX YXFJW SBIQY RRNJM ZEHRM QTNRC YNUVV KRBSF SXICA VVURC BNLKX GYNEC JMWYI NMBSK QORRN FRSXY SUXRI QHRVO GPTNJ YYLIR XBICK LPVSD SLXCE LIWMV PCIUS BSRMP WLEQP VXGMR MKLOQ QTKLK XQMVA YYJIE SDFCM LRQVW KFVKP MSXXS QCXYI DLMZX LDXFN JAKWT JICUM LIRRN XFTLK RXDZC SPXFJ JGKVC HISGF SYJLO PYZXL OHFJR VDMJD RXDLC FNOGE PINEI MLBYM MLRMV TYSPH IIKXS WVTSG IJUYZ XFJEY DWFNJ TKHBJ ULKRB XNIBI QTTPE QQDRR NXFJE YDWUJ IICSQ RRPVX FFKLO HPTGT OHYQD SCXYX DEXCY XYIZY RNEXR IZFJO OXZZK XRIQH RVOGP TNHSH LTKQS RBMFA VSLLZ XDSMP YMWXM KZPVX FJSEC OCYWS BMRJE ELPCI YMWXM PVIZE UFPJB SKYYI PMPJR WRIDJ RVOHY XGEBO KNXLD KCYZR DSFNJ WDVYB RRNFS WELSQ SUJSR IIJGX KKMTU HSWRF EGOEU FPJBS KYYIP PYRVW KRBTE PIGYR VROEP YFGYZ CWUSB SRMPA SXFII CVIYA VWGLC SJLOP YDUSG RRTJP OINYY ICIIJ GXRIP AVVIW LZXEX HUFIQ KRBXY ICPCU KWYYL ICCER RNCQY VLNEK GLCSZ XGEQI RCVME MKXRI ENIPL ERMVH RIPKR GOMLF CMDXJ JIMZT JNEKL VMTBE XHQTF RKJRJ IXRIW FCPCX YWKIN XMBRV NXFJV QOVYQ UGSXW YYMCA YXKSL IYSVZ ORRKL PNEWK FVDLC YIEFI JJIWD LCDYE NLYWU PIFCJ EAKPI NEKKR FTLVG LCSKL OCQFN FOJMW VXRIK FXVOE RIZXM LRMRX MVMXJ INXFJ ISKHY SUHSZ GIVHD LCKFV OWRFJ JKVYX KLOCA TLPNW CJFRO MRMVV CMBJZ XGEQF MIBCU NUINM RHYEX HUMVR DLCDT VOTRZ GXYXF JVHQI YSUPY SIJUM XXMNK XRIWH FYVHQ JVMDA YXRPC STJIC NICUR RNXFJ IIGIP JDEXC ZNXNK KEJUV YGIXR XDLCG FXDSK YYICM BJJAO VCXFW DICUK LKXLT EIYJR MVQMS SQUGV MKGUS GRYSU JYVYR FQORR NKWOI KJUXR ERYYI SVHTL VXIWR LWDIL INLKX QMRPV ACIFE COCIU SBSRM PHOWN FZVSR EQPMR ETJEX DLCKR MXXCX KMNIY XRMNX FJKMX AMTUQ KRYSU XRIJN FRCLM TBLSW QMRKQ CKFEI KRBQF SUIBY YSEKF YWYVF SYKLO WAFII MVMBJ ESHUJ TEXRM YWPIX FFKMC GCWKE SRLJZ XRIPH RRGIA QZQLH MBEMX XMYYM CKPJR XNMRH YXRIP JWSBI GKNIM ELSFX TYKUF ZOVGY NIWYQ YJXYT UMVVO ACFII SXFNE OSGMZ CHTYK UFZOV GYJES HRMVG YAYWU PIPGT EEPXC WDIKW SWZRQ XFJUM CXYST IMEPJ WYVPW NELSW KNEHD LCSNI KVCFC PBMEM KEXWU JIINX FJJGK VCHIS GJMWP SEGYS TEBVW ZJEVP MAVVY RWTLV LEAPF ROERF KMWIU JCPSP JYICS XQFZH DLCQZ SXAFT NMVPE TWMBW RNNMV PBJTP KVCIK LOWAF IIMVM BWSBM DDFYP SSSUX RERDF YMSSQ URYXH ZDTYZ CWKLO KSQWH YVMYY CGSSQ UFOOG QCINS PYYID MLBFS NQYSS ENPWI VRDIB TEXRI PTTOC FCQFA LYRNW MKQMS PSEVZ FTOSX UNCPX SRRRX DIPXF QEGFK FVDLC KRPVA MZCHX SRMLV DQCFK EVPkrypton4@bandit:/krypton/krypton4$ cat HINT
+Frequency analysis will still work, but you need to analyse it
+by "keylength".  Analysis of cipher text at position 1, 6, 12, etc
+should reveal the 1st letter of the key, in this case.  Treat this as
+6 different mono-alphabetic ciphers...
+
+Persistence and some good guesses are the key!
+krypton4@bandit:/krypton/krypton4$ subl found1
+Command 'subl' not found, but can be installed with:
+snap install sublime-text
+Please ask your administrator.
+krypton4@bandit:/krypton/krypton4$ nano found1
+Unable to create directory /home/krypton4/.local/share/nano/: No such file or directory
+It is required for saving/loading search history or cursor positions.
+
+krypton4@bandit:/krypton/krypton4$ cat found1
+YYICS JIZIB AGYYX RIEWV IXAFN JOOVQ QVHDL CRKLB SSLYX RIQYI IOXQT WXRIC RVVKP BHZXI YLYZP DLCDI IKGFJ UXRIP TFQGL CWVXR IEZRV NMYSF JDLCL RXOWJ NMINX FNJSP JGHVV ERJTT OOHRM VMBWN JTXKG JJJXY TSYKL OQZFT OSRFN JKBIY YSSHE LIKLO RFJGS VMRJC CYTCS VHDLC LRXOJ MWFYB JPNVR NWUMZ GRVMF UPOEB XKSDL CBZGU IBBZX MLMKK LOACX KECOC IUSBS RMPXR IPJZW XSPTR HKRQB VVOHR MVKEE PIZEX SDYYI QERJJ RYSLJ VZOVU NJLOW RTXSD LYYNE ILMBK LORYW VAOXM KZRNL CWZRA YGWVH DLCLZ VVXFF KASPJ GVIKW WWVTV MCIKL OQYSW SBAFJ EWRII SFACC MZRVO MLYYI MSSSK VISDY YIGML PZICW FJNMV PDNEH ISSFE HWEIJ PSEEJ QYIBW JFMIC TCWYE ZWLTK WKMBY YICGY WVGBS UKFVG IKJRR DSBJJ XBSWM VVYLR MRXSW BNWJO VCSKW KMBYY IQYYW UMKRM KKLOK YYVWX SMSVL KWCAV VNIQY ISIIB MVVLI DTIIC SGSRX EVYQC CDLMZ XLDWF JNSEP BRROO WJFMI CSDDF YKWQM VLKWM KKLOV CXKFE XRFBI MEPJW SBWFJ ZWGMA PVHKR BKZIB GCFEH WEWSF XKPJT NCYYR TUICX PTPLO VIJVT DSRMV AOWRB YIBIR MVWER QJKWK RBDFY MELSF XPEGQ KSPML IYIBX FJPXR ELPVH RMKFE HLEBJ YMWKM TUFII YSUXE VLJUX YAYWU XRIUJ JXGEJ PZRQS TJIJS IJIJS PWMKK KBEQX USDXC IYIBI YSUXR IPJNM DLBFZ WSIQF EHLYR YVVMY NXUSB SRMPW DMJQN SBIRM VTBIR YPWSP IIIIC WQMVL KHNZK SXMLY YIZEJ FTILY RSFAD SFJIW EVNWZ WOWFJ WSERB NKAKW LTCSX KCWXV OILGL XZYPJ NLSXC YYIBM ZGFRK VMZEH DSRTJ ROGIM RHKPQ TCSCX GYJKB ICSTS VSPFE HGEQF JARMR JRWNS PTKLI WBWVW CXFJV QOVYQ UGSXW BRWCS MSCIP XDFIF OLGSU ECXFJ PENZY STINX FJXVY YLISI MEKJI SEKFJ IEXHF NCPSI PKFVD LCWVA OVCSF JKVKX ESBLM ZJICM LYYMC GMZEX BCMKK LOACX KEXHR MVKBS SSUAK WSSKM VPCIZ RDLCF WXOVL TFRDL CXLRC LMSVL YXGSK LOMPK RGOWD TIXRI PJNIB ILTKV OIQYF SPJCW KLOQQ MRHOW MYYED FCKFV ORGLY XNSPT KLIEL IKSDS YSUXR IJNFR GIPJK MBIBF EHVEW IFAXY NTEXR IEWRW CELIW IVPYX CIOTU NKLDL CBFSN QYSRR NXFJJ GKVCH ISGOC JGMXK UFKGR krypton4@bandit:/krypton/krypton4$ cat krypton5
+HCIKV RJOXkrypton4@bandit:/krypton/krypton4$ logout
+Connection to krypton.labs.overthewire.org closed.
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ nano krypton5
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ ssh krypton5@krypton.labs.overthewire.org  -p 2231
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+krypton5@krypton.labs.overthewire.org's password: 
+Permission denied, please try again.
+krypton5@krypton.labs.overthewire.org's password: 
+Permission denied, please try again.
+krypton5@krypton.labs.overthewire.org's password: 
+krypton5@krypton.labs.overthewire.org: Permission denied (publickey,password).
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ nano krypton5
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ nano krypton5
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ ssh krypton5@krypton.labs.overthewire.org  -p 2231
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+krypton5@krypton.labs.overthewire.org's password: 
+Permission denied, please try again.
+krypton5@krypton.labs.overthewire.org's password: 
+Permission denied, please try again.
+krypton5@krypton.labs.overthewire.org's password: 
+
+      ,----..            ,----,          .---.
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' '
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      :
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ;
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"
+     \   \ .'        ;   |.'       \   \ ;
+  www. `---` ver     '---' he       '---" ire.org
+
+
+Welcome to OverTheWire!
+
+If you find any problems, please report them to the #wargames channel on
+discord or IRC.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames.
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ is disabled and to /proc
+  restricted so that users cannot snoop on eachother. Files and directories
+  with easily guessable or short names will be periodically deleted! The /tmp
+  directory is regularly wiped.
+  Please play nice:
+
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS!
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few useful tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /opt/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /opt/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /opt/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /opt/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us on discord or IRC.
+
+  Enjoy your stay!
+
+krypton5@bandit:~$ ls
+krypton5@bandit:~$ cd /krypton/krypton5
+krypton5@bandit:/krypton/krypton5$ ls
+found1  found2  found3  krypton6  README
+krypton5@bandit:/krypton/krypton5$ cat found1
+SXULW GNXIO WRZJG OFLCM RHEFZ ALGSP DXBLM PWIQT XJGLA RIYRI BLPPC HMXMG CTZDL CLKRU YMYSJ TWUTX ZCMRH EFZAL OTMNL BLULV MCQMG CTZDL CPTBI AVPML NVRJN SSXWT XJGLA RIQPE FUGVP PGRLG OMDKW RSIFK TZYRM QHNXD UOWQT XJGLA RIQAV VTZVP LMAIV ZPHCX FPAVT MLBSD OIFVT PBACS EQKOL BCRSM AMULP SPPYF CXOKH LZXUO GNLID ZVRAL DOACC INREN YMLRH VXXJD XMSIN BXUGI UPVRG ESQSG YKQOK LMXRS IBZAL BAYJM AYAVB XRSIC KKPYH ULWFU YHBPG VIGNX WBIQP RGVXY SSBEL NZLVW IMQMG YGVSW GPWGG NARSP TXVKL PXWGD XRJHU SXQMI VTZYO GCTZR JYVBK MZHBX YVBIT TPVTM OOWSA IERTA SZCOI TXXLY JAZQC GKPCS LZRYE MOOVC HIEKT RSREH MGNTS KVEPN NCTUN EOFIR TPPDL YAPNO GMKGC ZRGNX ARVMY IBLXU QPYYH GNXYO ACCIN QBUQA GELNR TYQIH LANTW HAYCP RJOMO KJYTV SGVLY RRSIG NKVXI MQJEG GJOML MSGNV VERRC MRYBA GEQNP RGKLB XFLRP XRZDE JESGN XSYVB DSSZA LCXYE ICXXZ OVTPW BLEVK ZCDEA JYPCL CDXUG MARML RWVTZ LXIPL PJKKL CIREP RJYVB ITPVV ZPHCX FPCRG KVPSS CPBXW VXIRS SHYTU NWCGI ANNUN VCOEA JLLFI LECSO OLCTG CMGAT SBITP PNZBV XWUPV RIHUM IBPHG UXUQP YYHNZ MOKXD LZBAK LNTCC MBJTZ KXRSM FSKZC SSELP UMARE BCIPK GAVCY EXNOG LNLCC JVBXH XHRHI AZBLD LZWIF YXKLM PELQG RVPAF ZQNVK VZLCE MPVKP FERPM AZALV MDPKH GKKCL YOLRX TSNIB ELRYN IVMKP ECVXH BELNI OETUX SSYGV TZARE RLVEG GNOQC YXFCX YOQYO ISUKA RIQHE YRHDS REFTB LEVXH MYEAJ PLCXK TRFZX YOZCY XUKVV MOJLR RMAVC XFLHO KXUVE GOSAR RHBSS YHQUS LXSDJ INXLH PXCCV NVIPX KMFXV ZLTOW QLKRY TZDLC DTVXB ACSDE LVYOL BCWPE ERTZD TYDXF AILBR YEYEG ESIHC QMPOX UDMLZ VVMBU KPGEC EGIWO HMFXG NXPBW KPVRS XZCEE PWVTM OOIYC XURRV BHCCS SKOLX XQSEQ RTAOP WNSZK MVDLC PRTRB ZRGPZ AAGGK ZIMAP RLKVW EAZRT XXZCS DMVVZ BZRWS MNRIM ZSRYX IEOVH GLGNL FZKHX KCESE KEHDI FLZRV KVFIB XSEKB TZSPE EAZMV DLCSY ZGGYK GCELN TTUIG MXQHT BJKXG ZRFEX ABIAP MIKWA RVMFK UGGFY JRSIP NBJUI LDSSZ ALMSA VPNTX IBSMO krypton5@bandit:/krypton/krypton5$ 
+krypton5@bandit:/krypton/krypton5$ cat found2
+GLCYX UKFHS PEZXF AVJOW QQYYR RAYHM GIEOG ARIAZ YEYXV PXFPJ BXXUY SLELR NXHNH PLARX TADLC CSLGE NOSPR IUUML VSNPR RJMOO GMLGU JHVBE QSMFI NZDSK HEFNX KSHGE AVZAZ YQCQP BAKPC LMQGR XXTYR WQSEG FHSPH ZYETX FPVMX PBTWV XMLHM AZXYG EQLRN IAPOZ CXIAZ MVMSL RVNZN SKXCL RNJOL XXSCS HYMYK ZCWPR XNWYR ZJXUG MASQC ELRXX DKWMY PLUGL KHTPR GAKVE WRCEI KESOV JPJGH XJYRE CEGAE HDIBQ SEZAL DAMZX UKKZR EBMIR TLLDH MHRNZ MOOMP CIFVX JDMTP VBGWZ SHCOI FZBUK XGZRF ZALWM JOIJE BUCMB PSSZA LMSYN LJOMO SXQOE ZVTUN HGCXL YMYKA GEWQO LHQIC LFYKL TOPJL RQOMZ YFQNY EOMFG EQCEG NXYVM IPEYG KNOVB ZKXKG UOPKC PBXKF DLCAE FYXUQ IPDLN QBUQL GXWRR YVEXM QMGOG JREGY WBLLA BEULX NTZSO SDDLN MZFGV YATRX YSKTN TRTNT AKRBX YQJRS OKQHE FXTAR IPWMX KTSKV EPVFU KAYJB ZKGNX YOAGW POKTW KGIPX GUVHV EGDXB SHYBS UOVNC XYIIQ DMEOY ARIUP EGNXY RSJOW NTWAR IUTRQ YXACX MWIEG USOJY TVGNX ASHCH MYRLL BZCAV RZMFX MAPPL GMHLS SEXJU BUDLC LJGKK UYSLD MEHXK CMPTW UGESX SRRSG UULNX GWPAO ZODFS EMJGG AKFCO VBUFH XHYME EHXYK RBELR TUYOE IQEFZ LPBCC DWVXM OKXUL CFOKP PCMFT YKTZO WFZAP UGJYV BRIAZ ELWEL DZNRB ZOELO LBZPH DIPES PUGJY VBAYY RHMPK CYXYK FHXWZ ZSGYB UMSLN SEJRV EAGWP SOGKK JGYIF KTJYE JQMEK LPBJC EGUHT YLIPE SPUGJ YVBDX VXTIY YRELR XXUYA DZVPU GJYVB ELRIH UMSPO FRJVO KQZPV OKBUQ EJHEL YTZCM EYIQZ HHZEQ DIAMX YLCRS IZGBS KRBAE FYXUQ IPDFL ZALWE GWFRO GNKPU LCFNX HFMJJ AEGIW OHSAJ EUFOO EBESS UHADL CCSBS AHNXF PSQJB UDIPP WGLHY DLCPW GGUSS WFXIA ZHMDL CCSLG ENOSP RIGNT AKPRS SHMAI EXMYI XOGKY JKLRJ GLZOI LESTU BUDSG EEYRD PXHQL RQBTY SIRTI FUYTO RALQR UNAYJ GEGBT LLAYC YXYET UYXFP VQXTD OVYYH GCHWY VRPVF GGKCI TPVNR FHSHQ LRQZA LVELO PNJRD OVCLP YRHPD IPTRT HRHMG GOIAZ TAFEP TSHYI VSRRD SSZAL BSYOF RZPLO RRSIP UGJYV BLRQZ ALMSD QIRXH VWAFP RNMXU DPCXE AUYZS BRJJB XFHVP WOVRY LLNML LFEUP UCYGE SSIEV DLCDT EKMAI ACWPJ UKULY RGIEE PLVPI PTGCB ARPYC KRYJB KVCNY SLLHX HJLVT KYSKT QESGN XWYGI PXFVT ZCIBL PBTZV XLGDA NEMVR MQMVR GDMKW Rkrypton5@bandit:/krypton/krypton5$ 
+krypton5@bandit:/krypton/krypton5$ cat found3
+FIPJS EJXYV CYYHZ KMOYH GNEYN XSYSI PHJOM OKLYY HBTXH MLIYI RGGKK PMFHJ GMJRX GNOVT ZHCSL ZVBAL ZOVKZ RHTWL BLGDJ YGIWO HULMF ZVVKX YDXUU NNRMR AMGZX KSXQR VNBBA IELOP BTZLF MRJET GBUCX RSIYK OPDCY YHRBT UOWAP RPKHM DLCMV VYDMS VCSIU GWHQS MOPRM TUNAY DEYOM AVITL MAUYP DJMCL VYUYY ALDXB IDPXK QQMGZ XKCPC PONTW JVSQP EAJPL BIMQE SOGLD IVEYE KAPCW FZIFG GKLYA VPRYM VYXFZ YTNIS KMLHI EKMYS QFPAB XXHXS BOPVZ MSOWJ PIXIK PCTDW EKKGD SKQPX GOGNF IPJGY ULLDS FTWUK TKGLG NLJOZ PDMQE SOKIY OWSXI QCTZW EBPSS NTPBF SEAUO VOVSM VIQLT YWSPP EFZAV EKFTX JKKLC TSYJE UFMSP YXIAZ LVPWG WOBXZ SKWQS MFRBU ORRSS HMAUY XMQES OGLXI QDMAG VJYVB LRPKP PDLFT WFZHJ UMLRW JGLHC AFTXR GLARI RZTFU YARIU LZRYM OKXZC SXKNW YRRSI AKBNR FMFVV TZIOE ASSEZ ALCTC NOFUY ZKMJE LNZZS SRRPH VTMOO WSYPV MAAPE PLXFK THPEA PLNHB AEEJW CFAIW BIQDI QGGKA YGPXR JPHCW RTPYR BNRXC OYCAG KOVRS IDATP XXUTK OETWK MPZJZ UBZDF PTKUZ XFOWR SEGOM TEWRS EIKVV CXRSI VXHDX IPTRL KTYCK MYIOE LVWIN LMAYM VNVGW PGUMO OGMXT BYXKK RBCIF KKCOH CITEK LZSSL ZJGKE SCSLD FNTDO OLYOE UKTSD LWNSY UNYSR FTWPN XLUWY YHUOL MKGCE LBAZO VMLPH OUKLP IUEVN IXZYJ YYBVK MFLYR AIENT WCXFP GBTYP NILEM NRUHM LCWSE IELBO QTRGK ESCSL DFNTD DOVCA VVTVP ZEJWC BIVBZ MCOAV ZAARI ALVRY HMYXF PVCKH WVIYY HCKKO KTQDI PUGKR ELOGN XXZVM IPWRI HUNLY YHPRH ARIQN SZKXH CMJJS SLTUN SLNSZ VELDM LRLVY KLCIK MPNTV LDSYX EACAV GEQDM GZBUQ JMCLV YIVBX PLMGS KSYVP JHEUI WOHMQ JGULS OINEL RGKYS ZYWSS NBZLV CLOSG LABSS DIQNB TKRBS IFGBK DSRSI QXTDO VYDLR SHCOH FTWPN TPBXM TXVCB ZREAN SZSHK KXGZR CXXWK VCOJB XTFYY LRPNJ RDRSK LCPUF LRIPP EGGGF DMKPX BJTFC LCXEL GLRPS PXVWG KCSWJ ZVEEH YCLCX ELUGS IEQVJ BXTNO RRWIZ GGMBS KEIYR LVXWZ LRXVE LKWCE SYKMT OOLZA LKLZS VRPPY YHUCF YYOVT EVXHM YWVXR LCCCD WVXPL RETPS SZXUD MKPWG NXOYR MFVGU XUDIP EEVTR VEVEP RGRXT ORGYX UKBYD VYGIY RBUQF YNOJG KKCEL OJBXP HBHQM IGCBE DPMYH BTTUN TYCMF YBYKZ YDXQK TSYJR CEIKE SSRED MEOGA OPJDS AGGKM SKAEA ELOYY QPCRY PLKVC BYVZX HPVCY GUNHB CIYDA RREHC ELPRT RBZRS LPCRY LPBRM EQHIA PXXFP LNHBA YJQFG UZKHF IJWMA MRVEV QPPSO MOSRI DMETH AYJJL XREXH BWGEM FLBMD ICYCR GKZCM LNIJK LPXGC TGNSX SKWRQ VBSYY KRAPkrypton5@bandit:/krypton/krypton5$ ls
+found1  found2  found3  krypton6  README
+krypton5@bandit:/krypton/krypton5$ ls -la
+total 28
+drwxr-xr-x 2 root     root     4096 Jun 16 02:49 .
+drwxr-xr-x 9 root     root     4096 Jun 16 02:49 ..
+-rw-r----- 1 krypton5 krypton5 1776 Jun 16 02:49 found1
+-rw-r----- 1 krypton5 krypton5 1915 Jun 16 02:49 found2
+-rw-r----- 1 krypton5 krypton5 2110 Jun 16 02:49 found3
+-rw-r----- 1 krypton5 krypton5    7 Jun 16 02:49 krypton6
+-rw-r----- 1 krypton5 krypton5  151 Jun 16 02:49 README
+krypton5@bandit:/krypton/krypton5$ cat found1
+SXULW GNXIO WRZJG OFLCM RHEFZ ALGSP DXBLM PWIQT XJGLA RIYRI BLPPC HMXMG CTZDL CLKRU YMYSJ TWUTX ZCMRH EFZAL OTMNL BLULV MCQMG CTZDL CPTBI AVPML NVRJN SSXWT XJGLA RIQPE FUGVP PGRLG OMDKW RSIFK TZYRM QHNXD UOWQT XJGLA RIQAV VTZVP LMAIV ZPHCX FPAVT MLBSD OIFVT PBACS EQKOL BCRSM AMULP SPPYF CXOKH LZXUO GNLID ZVRAL DOACC INREN YMLRH VXXJD XMSIN BXUGI UPVRG ESQSG YKQOK LMXRS IBZAL BAYJM AYAVB XRSIC KKPYH ULWFU YHBPG VIGNX WBIQP RGVXY SSBEL NZLVW IMQMG YGVSW GPWGG NARSP TXVKL PXWGD XRJHU SXQMI VTZYO GCTZR JYVBK MZHBX YVBIT TPVTM OOWSA IERTA SZCOI TXXLY JAZQC GKPCS LZRYE MOOVC HIEKT RSREH MGNTS KVEPN NCTUN EOFIR TPPDL YAPNO GMKGC ZRGNX ARVMY IBLXU QPYYH GNXYO ACCIN QBUQA GELNR TYQIH LANTW HAYCP RJOMO KJYTV SGVLY RRSIG NKVXI MQJEG GJOML MSGNV VERRC MRYBA GEQNP RGKLB XFLRP XRZDE JESGN XSYVB DSSZA LCXYE ICXXZ OVTPW BLEVK ZCDEA JYPCL CDXUG MARML RWVTZ LXIPL PJKKL CIREP RJYVB ITPVV ZPHCX FPCRG KVPSS CPBXW VXIRS SHYTU NWCGI ANNUN VCOEA JLLFI LECSO OLCTG CMGAT SBITP PNZBV XWUPV RIHUM IBPHG UXUQP YYHNZ MOKXD LZBAK LNTCC MBJTZ KXRSM FSKZC SSELP UMARE BCIPK GAVCY EXNOG LNLCC JVBXH XHRHI AZBLD LZWIF YXKLM PELQG RVPAF ZQNVK VZLCE MPVKP FERPM AZALV MDPKH GKKCL YOLRX TSNIB ELRYN IVMKP ECVXH BELNI OETUX SSYGV TZARE RLVEG GNOQC YXFCX YOQYO ISUKA RIQHE YRHDS REFTB LEVXH MYEAJ PLCXK TRFZX YOZCY XUKVV MOJLR RMAVC XFLHO KXUVE GOSAR RHBSS YHQUS LXSDJ INXLH PXCCV NVIPX KMFXV ZLTOW QLKRY TZDLC DTVXB ACSDE LVYOL BCWPE ERTZD TYDXF AILBR YEYEG ESIHC QMPOX UDMLZ VVMBU KPGEC EGIWO HMFXG NXPBW KPVRS XZCEE PWVTM OOIYC XURRV BHCCS SKOLX XQSEQ RTAOP WNSZK MVDLC PRTRB ZRGPZ AAGGK ZIMAP RLKVW EAZRT XXZCS DMVVZ BZRWS MNRIM ZSRYX IEOVH GLGNL FZKHX KCESE KEHDI FLZRV KVFIB XSEKB TZSPE EAZMV DLCSY ZGGYK GCELN TTUIG MXQHT BJKXG ZRFEX ABIAP MIKWA RVMFK UGGFY JRSIP NBJUI LDSSZ ALMSA VPNTX IBSMO krypton5@bandit:/krypton/krypton5$ cat krypton6 
+BELOS Zkrypton5@bandit:/krypton/krypton5$ logout
+Connection to krypton.labs.overthewire.org closed.
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ nano krypton6
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ ssh krypton6@krypton.labs.overthewire.org  -p 2231
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+krypton6@krypton.labs.overthewire.org's password: 
+Permission denied, please try again.
+krypton6@krypton.labs.overthewire.org's password: 
+
+      ,----..            ,----,          .---.
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' '
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      :
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ;
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"
+     \   \ .'        ;   |.'       \   \ ;
+  www. `---` ver     '---' he       '---" ire.org
+
+
+Welcome to OverTheWire!
+
+If you find any problems, please report them to the #wargames channel on
+discord or IRC.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames.
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ is disabled and to /proc
+  restricted so that users cannot snoop on eachother. Files and directories
+  with easily guessable or short names will be periodically deleted! The /tmp
+  directory is regularly wiped.
+  Please play nice:
+
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS!
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few useful tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /opt/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /opt/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /opt/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /opt/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us on discord or IRC.
+
+  Enjoy your stay!
+
+krypton6@bandit:~$ ls
+krypton6@bandit:~$ cd /krypton/krypton7
+krypton6@bandit:/krypton/krypton7$ ..
+..: command not found
+krypton6@bandit:/krypton/krypton7$ cd ..
+krypton6@bandit:/krypton$ cd krypton6
+krypton6@bandit:/krypton/krypton6$ ls
+encrypt6  HINT1  HINT2  keyfile.dat  krypton7  onetime  README
+krypton6@bandit:/krypton/krypton6$ ls -la
+total 56
+drwxr-xr-x 3 root     root      4096 Jun 16 02:49 .
+drwxr-xr-x 9 root     root      4096 Jun 16 02:49 ..
+-rwsr-x--- 1 krypton7 krypton6 16520 Jun 16 02:49 encrypt6
+-rw-r----- 1 krypton6 krypton6   164 Jun 16 02:49 HINT1
+-rw-r----- 1 krypton6 krypton6    11 Jun 16 02:49 HINT2
+-rw-r----- 1 krypton7 krypton7    11 Jun 16 02:49 keyfile.dat
+-rw-r----- 1 krypton6 krypton6    15 Jun 16 02:49 krypton7
+drwxr-xr-x 2 root     root      4096 Jun 16 02:49 onetime
+-rw-r----- 1 krypton6 krypton6  4342 Jun 16 02:49 README
+krypton6@bandit:/krypton/krypton6$ ls onetime/
+cipher1  key1  plain1
+krypton6@bandit:/krypton/krypton6$ cat krypton7 
+PNUKLYLWRQKGKBEkrypton6@bandit:/krypton/krypton6$ cat HINT1
+The 'random' generator has a limited number of bits, and is periodic.
+Entropy analysis and a good look at the bytes in a hex editor will help.
+
+There is a pattern!
+krypton6@bandit:/krypton/krypton6$ 
+
+krypton6@bandit:/krypton/krypton6$ cat HINT1
+The 'random' generator has a limited number of bits, and is periodic.
+Entropy analysis and a good look at the bytes in a hex editor will help.
+
+There is a pattern!
+krypton6@bandit:/krypton/krypton6$ cat HINT2
+8 bit LFSR
+krypton6@bandit:/krypton/krypton6$ mkdir /tmp/lev7
+krypton6@bandit:/krypton/krypton6$ cd /tmp/lev7
+krypton6@bandit:/tmp/lev7$ ls
+krypton6@bandit:/tmp/lev7$ ln -s /krypton/krypton6/k
+keyfile.dat  krypton7     
+krypton6@bandit:/tmp/lev7$ ln -s /krypton/krypton6/k
+keyfile.dat  krypton7     
+krypton6@bandit:/tmp/lev7$ ln -s /krypton/krypton6/keyfile.dat 
+krypton6@bandit:/tmp/lev7$ ln -s /krypton/krypton6/krypton7 
+krypton6@bandit:/tmp/lev7$ ls
+keyfile.dat  krypton7
+krypton6@bandit:/tmp/lev7$ chmod 777 .
+krypton6@bandit:/tmp/lev7$ touch a.txt 
+krypton6@bandit:/tmp/lev7$ nano a.txt 
+Unable to create directory /home/krypton6/.local/share/nano/: No such file or directory
+It is required for saving/loading search history or cursor positions.
+
+krypton6@bandit:/tmp/lev7$ cat a.txt 
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa
+krypton6@bandit:/tmp/lev7$ /krypton/krypton6/encrypt6 a.txt cihper.txt
+krypton6@bandit:/tmp/lev7$ cat cihper.txt 
+EICTDNEpUTHQoQUJMHLrErGJyHg89uy71MyuHIYZKTDNEpUTHQoQUJMHLrErGJyHg89uy71MyuHton6@bandit:/tmp/lev7$ 
+krypton6@bandit:/tmp/lev7$ cat cihper.txt 
+EICTDNEpUTHQoQUJMHLrErGJyHg89uy71MyuHIYZKTDNEpUTHQoQUJMHLrErGJyHg89uy71MyuHton6@bandit:/tmp/lev7$ 
+krypton6@bandit:/tmp/lev7$ man xxd
+krypton6@bandit:/tmp/lev7$ xxd -b a.txt 
+00000000: 01000001 01000001 01000001 01000001 01000001 01000001  AAAAAA
+00000006: 01000001 01000001 01000001 01000001 01000001 01000001  AAAAAA
+0000000c: 01000001 01000001 01000001 01000001 01000001 01000001  AAAAAA
+00000012: 01000001 01000001 01000001 01000001 01000001 01000001  AAAAAA
+00000018: 01000001 01000001 01000001 01000001 01000001 01000001  AAAAAA
+0000001e: 01000001 01000001 01000001 01000001 01000001 01000001  AAAAAA
+00000024: 01000001 01000001 01000001 01000001 01000001 01000001  AAAAAA
+0000002a: 01000001 01000001 01000001 01000001 01000001 01000001  AAAAAA
+00000030: 01000001 01000001 01000001 01000001 01000001 01000001  AAAAAA
+00000036: 01000001 01000001 01000001 01000001 01000001 01000001  AAAAAA
+0000003c: 01000001 01000001 01000001 01000001 01000001 01000001  AAAAAA
+00000042: 01000001 01000001 01000001 01000001 01100001 00001010  AAAAa.
+krypton6@bandit:/tmp/lev7$ xxd -b cihper.txt 
+00000000: 01000101 01001001 01000011 01010100 01000100 01000111  EICTDG
+00000006: 01011001 01001001 01011001 01011010 01001011 01010100  YIYZKT
+0000000c: 01001000 01001110 01010011 01001001 01010010 01000110  HNSIRF
+00000012: 01011000 01011001 01000011 01010000 01000110 01010101  XYCPFU
+00000018: 01000101 01001111 01000011 01001011 01010010 01001110  EOCKRN
+0000001e: 01000101 01001001 01000011 01010100 01000100 01000111  EICTDG
+00000024: 01011001 01001001 01011001 01011010 01001011 01010100  YIYZKT
+0000002a: 01001000 01001110 01010011 01001001 01010010 01000110  HNSIRF
+00000030: 01011000 01011001 01000011 01010000 01000110 01010101  XYCPFU
+00000036: 01000101 01001111 01000011 01001011 01010010 01001110  EOCKRN
+0000003c: 01000101 01001001 01000011 01010100 01000100 01000111  EICTDG
+00000042: 01011001 01001001 01011001 01011010 01001011           YIYZK
+krypton6@bandit:/tmp/lev7$ nano main.py
+Unable to create directory /home/krypton6/.local/share/nano/: No such file or directory
+It is required for saving/loading search history or cursor positions.
+
+krypton6@bandit:/tmp/lev7$ python3 main.py /krypton/krypton6/krypton7 EICTDGYIYZKTHNSIRFXYCPFUEOCKRN
+Decoding file '/krypton/krypton6/krypton7' with key 'EICTDGYIYZKTHNSIRFXYCPFUEOCKRN':
+
+LFSRISNOTRANDOM
+krypton6@bandit:/tmp/lev7$ logout
+Connection to krypton.labs.overthewire.org closed.
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ nano krypton7
+                                                                                                                                  
+┌──(rabbit㉿Devil)-[~/Documents/mylabs/overthewire/krypton]
+└─$ ssh krypton7@krypton.labs.overthewire.org  -p 2231
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+krypton7@krypton.labs.overthewire.org's password: 
+
+      ,----..            ,----,          .---.
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' '
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      :
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ;
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"
+     \   \ .'        ;   |.'       \   \ ;
+  www. `---` ver     '---' he       '---" ire.org
+
+
+Welcome to OverTheWire!
+
+If you find any problems, please report them to the #wargames channel on
+discord or IRC.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames.
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ is disabled and to /proc
+  restricted so that users cannot snoop on eachother. Files and directories
+  with easily guessable or short names will be periodically deleted! The /tmp
+  directory is regularly wiped.
+  Please play nice:
+
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS!
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few useful tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /opt/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /opt/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /opt/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /opt/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us on discord or IRC.
+
+  Enjoy your stay!
+
+krypton7@bandit:~$ cd /krypton/krypton7
+krypton7@bandit:/krypton/krypton7$ ls
+README
+krypton7@bandit:/krypton/krypton7$ cat README 
+Congratulations on beating Krypton!
+krypton7@bandit:/krypton/krypton7$ client_loop: send disconnect: Broken pipe
+                                               
